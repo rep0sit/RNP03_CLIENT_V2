@@ -194,7 +194,7 @@ public ClientGui(String name, String address, int port) {
 		String message = txtMessage.getText();
 		
 		if(!message.equals("")){
-			console(name + ": " + txtMessage.getText());
+			//console(name + ": " + txtMessage.getText());
 			
 			//client.write(message);
 			
