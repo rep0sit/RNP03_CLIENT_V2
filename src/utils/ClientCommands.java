@@ -20,7 +20,7 @@ public final class ClientCommands {
 	// Client will den Chatroom verlassen: <timecode> LEAVE
 	public static final String LEAVE = "LEAVE";
 
-	// Client fordert vom Server möglichst alle Nachrichten an, die jüngger sind als
+	// Client fordert vom Server mï¿½glichst alle Nachrichten an, die jï¿½ngger sind als
 	// timecodeVonNachricht
 	// <timecode> GET timecodeVonNachricht -> SErver antwortet mit "SERVER SEND
 	// oldestMsg.....SERVER SEND newestMsg
@@ -39,8 +39,9 @@ public final class ClientCommands {
 	
 	
 	// LIST OF ALL CLIENT COMMANDS (is automatically updated with reflections)
-	
-	public static List<String> getClientCommandList(){
+	public static final List<String> CLIENT_COMMAND_LIST = getClientCommandList();
+		
+	private static List<String> getClientCommandList(){
 		List<String> valueList = new ArrayList<>();
 		
 	
@@ -48,7 +49,11 @@ public final class ClientCommands {
 		
 		for(Field f : allFields) {
 			try {
-				valueList.add((String)f.get(null));
+				String val = (String)f.get(null);
+				if(val != null) {
+					valueList.add(val);
+				}
+				
 				
 			} catch (IllegalArgumentException | IllegalAccessException e) {
 				// TODO Auto-generated catch block

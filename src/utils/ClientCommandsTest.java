@@ -8,7 +8,7 @@ public class ClientCommandsTest {
 
 	@Test
 	public void testGetClientCommandList() {
-		List<String> list = ClientCommands.getClientCommandList();
+		List<String> list = ClientCommands.CLIENT_COMMAND_LIST;
 		
 		for(String s : list) {
 			System.out.println(s);

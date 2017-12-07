@@ -256,47 +256,11 @@ public final class ClientThread extends AbstractClientServerThread {
 		
 		if(!message.matches("\\s+") && !message.equals("")) {
 			long timeCode = System.currentTimeMillis();
-			List<String> userCommands = ClientCommands.getClientCommandList();
+			List<String> userCommands = ClientCommands.CLIENT_COMMAND_LIST;
 			boolean isCommand = userCommands.contains(message.split(" ")[0]);
 			write(isCommand ? timeCode + " " + message : timeCode + " " + ClientCommands.SEND + " " + message);
 		}
 		
-	
-//		Date date = new Date();
-//		long timecode = date.getTime();
-//		
-//		//Vom client ankommende, im Chat eingegebene Nachricht, gesplittet nach Leerzeichen
-//		String[] splitMsg = message.split(" ");
-//
-//		if (splitMsg.length > 0) {
-//			System.out.println("MESSAGE FROM CLIENT: " + message);
-//			switch (splitMsg[0]) {
-//			case Commands.USERS:
-//				write(timecode + " " + message);
-//				break;
-//			case Commands.LIST:
-//				write(timecode + " " + message);
-//				break;
-//			case Commands.LEAVE:
-//				write(timecode + " " + message);
-//				break;
-//			case Commands.QUIT:
-//				write(timecode + " " + message);
-//				break;
-//			case Commands.GET:
-//				write(timecode + " GET " + buildMessage(2, splitMsg));
-//				break;
-//			case Commands.CREATE_ROOM:
-//				write(timecode + " CREATE " + buildMessage(2, splitMsg));
-//				break;
-//			case Commands.JOIN:
-//				write(timecode + " JOIN " + buildMessage(2, splitMsg));
-//				break;
-//			default:
-//				write(timecode + " SEND " + message);
-//				break;
-//			}
-//		}
 	}
 	
 	
