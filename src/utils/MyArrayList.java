@@ -20,7 +20,7 @@ public class MyArrayList<E> extends ArrayList<E> implements MyList<E> {
 	}
 	
 	@Override
-	public E removeAndReturnFirstIfEquals(E e) {
+	public E removeAndReturnFirst(E e) {
 		E elem = null;
 		
 		if(!isEmpty()) {
@@ -32,7 +32,7 @@ public class MyArrayList<E> extends ArrayList<E> implements MyList<E> {
 	}
 
 	@Override
-	public boolean removeFirstIfEquals(E e) {
+	public boolean removeFirst(E e) {
 		if(isEmpty() || !get(0).equals(e)) {
 			return false;
 		}

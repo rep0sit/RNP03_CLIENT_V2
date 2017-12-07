@@ -38,10 +38,14 @@ public final class ClientCommands {
 	
 	
 	
-	// LIST OF ALL CLIENT COMMANDS (is automatically updated with reflections)
+	// 
+	/**
+	 * LIST OF ALL CLIENT COMMANDS. <br> Is automatically updated with reflections to ClientCommand.class.
+	 */
 	public static final List<String> CLIENT_COMMAND_LIST = getClientCommandList();
 		
 	private static List<String> getClientCommandList(){
+		
 		List<String> valueList = new ArrayList<>();
 		
 	
@@ -60,7 +64,6 @@ public final class ClientCommands {
 				e.printStackTrace();
 			}
 		}
-		
 		
 		return valueList;
 	}

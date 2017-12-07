@@ -152,18 +152,18 @@ public final class ClientThread extends AbstractClientServerThread {
 				 */
 
 				
-				if(wordList.removeFirstIfEquals(Commands.SERVER_PREFIX)) {
-					if(wordList.removeFirstIfEquals(Commands.GREETINGS)) {
+				if(wordList.removeFirst(Commands.SERVER_PREFIX)) {
+					if(wordList.removeFirst(Commands.GREETINGS)) {
 						//selfMessage("[LOGIN SUCCESSFUL]" + listToString(wordList));
 						msgFromClient(Commands.LOGIN + " " + name);
 					}
-					else if(wordList.removeFirstIfEquals(Commands.SEND)) {
+					else if(wordList.removeFirst(Commands.SEND)) {
 						selfMessage("SERVER: " + listToString(wordList));
 					}
-					else if(wordList.removeFirstIfEquals(Commands.DELETE)) {
+					else if(wordList.removeFirst(Commands.DELETE)) {
 						selfMessage("SERVER:  Room " + listToString(wordList) + " closed.");
 					}
-				}else if(wordList.removeFirstIfEquals(Commands.QUIT)) {
+				}else if(wordList.removeFirst(Commands.QUIT)) {
 					selfMessage("SERVER: " + listToString(wordList) + " (kicked from Server)");
 					close();
 					gui.dispose();
@@ -175,19 +175,19 @@ public final class ClientThread extends AbstractClientServerThread {
 					@SuppressWarnings("unused")
 					Date serverDate = new Date(Long.valueOf(serverTimeCode));
 					
-					if(wordList.removeFirstIfEquals(Commands.LOGIN)) {
-						if(wordList.removeFirstIfEquals(Commands.SUCCESS)) {
+					if(wordList.removeFirst(Commands.LOGIN)) {
+						if(wordList.removeFirst(Commands.SUCCESS)) {
 							selfMessage("SERVER: " + listToString(wordList) + " [LOGIN SUCCESSFUL]");
 						}
-						else if(wordList.removeFirstIfEquals(Commands.FAIL)) {
+						else if(wordList.removeFirst(Commands.FAIL)) {
 							selfMessage("[LOGIN NOT SUCCESSFUL]");
 						}
 					}
-					else if(wordList.removeFirstIfEquals(Commands.USERS)) {
-						if(wordList.removeFirstIfEquals(Commands.START)) {
+					else if(wordList.removeFirst(Commands.USERS)) {
+						if(wordList.removeFirst(Commands.START)) {
 							selfMessage("[USER LIST]-->");
 						}
-						else if(wordList.removeFirstIfEquals(Commands.END)) {
+						else if(wordList.removeFirst(Commands.END)) {
 							selfMessage("-->[END OF USER LIST]");
 							userCounter = 0;
 						}
@@ -195,11 +195,11 @@ public final class ClientThread extends AbstractClientServerThread {
 							selfMessage("user#"+ ++userCounter +": " +listToString(wordList));
 						}
 					}
-					else if(wordList.removeFirstIfEquals(Commands.LIST)) {
-						if(wordList.removeFirstIfEquals(Commands.START)) {
+					else if(wordList.removeFirst(Commands.LIST)) {
+						if(wordList.removeFirst(Commands.START)) {
 							selfMessage("[ROOM LIST]-->");
 						}
-						else if(wordList.removeFirstIfEquals(Commands.END)) {
+						else if(wordList.removeFirst(Commands.END)) {
 							selfMessage("-->[END OF ROOM LIST]");
 							roomCounter = 0;
 						}
@@ -207,27 +207,27 @@ public final class ClientThread extends AbstractClientServerThread {
 							selfMessage("room#"+ ++roomCounter + ": " + listToString(wordList));
 						}
 					}
-					else if(wordList.removeFirstIfEquals(Commands.CREATE)) {
-						if(wordList.removeFirstIfEquals(Commands.FAIL)) {
+					else if(wordList.removeFirst(Commands.CREATE)) {
+						if(wordList.removeFirst(Commands.FAIL)) {
 							selfMessage("[ROOM COULD NOT BE CREATED!]");
 						}
-						else if(wordList.removeFirstIfEquals(Commands.SUCCESS)) {
+						else if(wordList.removeFirst(Commands.SUCCESS)) {
 							selfMessage("[SUCCESSFULLY CREATED ROOM!]");
 						}
 					}
-					else if(wordList.removeFirstIfEquals(Commands.JOIN)) {
-						if(wordList.removeFirstIfEquals(Commands.SUCCESS)) {
+					else if(wordList.removeFirst(Commands.JOIN)) {
+						if(wordList.removeFirst(Commands.SUCCESS)) {
 							selfMessage("[SUCCESSFULLY JOINED ROOM!]");
 						}
-						else if(wordList.removeFirstIfEquals(Commands.FAIL)) {
+						else if(wordList.removeFirst(Commands.FAIL)) {
 							selfMessage("[ROOM COULD NOT BE JOINED!]");
 						}
 					}
-					else if(wordList.removeFirstIfEquals(Commands.LEAVE)) {
-						if(wordList.removeFirstIfEquals(Commands.SUCCESS)) {
+					else if(wordList.removeFirst(Commands.LEAVE)) {
+						if(wordList.removeFirst(Commands.SUCCESS)) {
 							selfMessage("[SUCCESSFULLY LEFT ROOM!]");
 						}
-						else if(wordList.removeFirstIfEquals(Commands.FAIL)) {
+						else if(wordList.removeFirst(Commands.FAIL)) {
 							selfMessage("[ROOM COULD NOT BE LEFT!]");
 						}
 					}
@@ -258,7 +258,10 @@ public final class ClientThread extends AbstractClientServerThread {
 			long timeCode = System.currentTimeMillis();
 			List<String> userCommands = ClientCommands.CLIENT_COMMAND_LIST;
 			boolean isCommand = userCommands.contains(message.split(" ")[0]);
-			write(isCommand ? timeCode + " " + message : timeCode + " " + ClientCommands.SEND + " " + message);
+			write(isCommand ? 
+					timeCode + " " + message : 
+						timeCode + " " + ClientCommands.SEND + " " + message);
+			
 		}
 		
 	}

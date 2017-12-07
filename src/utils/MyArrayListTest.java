@@ -12,7 +12,7 @@ public class MyArrayListTest {
 	public void testRemoveAndReturnFirstIfEquals() {
 		MyArrayList<Integer> l = new MyArrayList<>(Arrays.asList(1,2,3,4,5));
 		
-		int first = l.removeAndReturnFirstIfEquals(1);
+		int first = l.removeAndReturnFirst(1);
 		
 		assertEquals(first, 1);
 		assertTrue(l.size() == 4);
@@ -23,11 +23,11 @@ public class MyArrayListTest {
 	public void testRemoveFirstIfEquals() {
 		MyArrayList<Integer> l = new MyArrayList<>(Arrays.asList(1,2,3,4,5));
 		
-		assertTrue(l.removeFirstIfEquals(1));
-		assertTrue(l.removeFirstIfEquals(2));
-		assertTrue(l.removeFirstIfEquals(3));
-		assertTrue(l.removeFirstIfEquals(4));
-		assertTrue(l.removeFirstIfEquals(5));
+		assertTrue(l.removeFirst(1));
+		assertTrue(l.removeFirst(2));
+		assertTrue(l.removeFirst(3));
+		assertTrue(l.removeFirst(4));
+		assertTrue(l.removeFirst(5));
 	}
 
 }

@@ -16,7 +16,7 @@ public interface MyList<E> extends List<E> {
 	 * @param e
 	 * @return
 	 */
-	E removeAndReturnFirstIfEquals(E e);
+	E removeAndReturnFirst(E e);
 	
 	/**
 	 * Removes the first element and returns true if
@@ -26,7 +26,7 @@ public interface MyList<E> extends List<E> {
 	 * @param e
 	 * @return
 	 */
-	boolean removeFirstIfEquals(E e);
+	boolean removeFirst(E e);
 	
 	
 }
